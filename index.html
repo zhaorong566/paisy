@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Paisy — A modern blog about technology, design, and ideas that matter." />
+  <title>Paisy — Modern Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Loading bar -->
+  <div class="loading-bar" id="loadingBar" aria-hidden="true"></div>
+
+  <!-- Background orbs -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Cursor glow (desktop only) -->
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="nav-header" id="navHeader">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="#" class="nav-logo" aria-label="Paisy home">
+        <span class="logo-icon">P</span>
+        <span class="logo-text">Paisy</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="#featured" class="nav-link">Featured</a></li>
+        <li><a href="#posts" class="nav-link">Posts</a></li>
+        <li><a href="#topics" class="nav-link">Topics</a></li>
+        <li><a href="#newsletter" class="nav-link">Newsletter</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#newsletter" class="btn btn-primary btn-sm">Subscribe</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge reveal">
+            <span class="badge-dot"></span>
+            New posts every week
+          </div>
+
+          <h1 class="hero-title reveal">
+            Ideas worth
+            <span class="gradient-text">reading,</span>
+            <span class="typed-wrapper">
+              <span class="typed-text" id="typedText"></span><span class="cursor-blink">|</span>
+            </span>
+          </h1>
+
+          <p class="hero-desc reveal">
+            Explore thoughtful writing on technology, design, and the ideas shaping our world.
+            No clickbait — just substance.
+          </p>
+
+          <div class="hero-cta reveal">
+            <a href="#featured" class="btn btn-primary">Start Reading</a>
+            <a href="#topics" class="btn btn-ghost">Browse Topics</a>
+          </div>
+
+          <div class="hero-stats reveal">
+            <div class="stat">
+              <span class="stat-num" data-target="128">0</span>
+              <span class="stat-label">Articles</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-num" data-target="24000" data-suffix="K">0</span>
+              <span class="stat-label">Readers</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-num" data-target="3">0</span>
+              <span class="stat-label">Posts / week</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#featured" class="scroll-indicator" aria-label="Scroll to content">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
+    </section>
+
+    <!-- ===== FEATURED POST ===== -->
+    <section class="featured-section" id="featured">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">🔥 Featured</span>
+          <h2 class="section-title">Must Read</h2>
+        </div>
+
+        <article class="featured-card reveal" tabindex="0">
+          <div class="featured-image">
+            <div class="featured-gradient" aria-hidden="true"></div>
+            <span class="post-tag tag-ai">AI</span>
+          </div>
+          <div class="featured-body">
+            <div class="post-meta">
+              <div class="author-avatar" aria-hidden="true">ZR</div>
+              <span class="author-name">Zhaorong</span>
+              <span class="meta-sep">·</span>
+              <time datetime="2026-03-10">March 10, 2026</time>
+              <span class="meta-sep">·</span>
+              <span>8 min read</span>
+            </div>
+            <h3 class="featured-title">
+              The Age of Generative AI: How Machines Learned to Dream
+            </h3>
+            <p class="featured-excerpt">
+              Generative AI has gone from research paper curiosity to the backbone of modern software
+              in just a few years. We unpack what this truly means for creativity, labor, and the
+              boundaries between human and machine intelligence.
+            </p>
+            <a href="#" class="btn btn-primary" aria-label="Read full article: The Age of Generative AI">
+              Read Article →
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== LATEST POSTS ===== -->
+    <section class="posts-section" id="posts">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">📝 Latest</span>
+          <h2 class="section-title">Recent Posts</h2>
+        </div>
+
+        <div class="posts-grid">
+
+          <article class="post-card reveal" tabindex="0">
+            <div class="card-image card-img-1" aria-hidden="true">
+              <span class="post-tag tag-tech">Technology</span>
+            </div>
+            <div class="card-body">
+              <div class="post-meta">
+                <time datetime="2026-03-14">Mar 14, 2026</time>
+                <span class="meta-sep">·</span>
+                <span>6 min read</span>
+              </div>
+              <h3 class="card-title">WebAssembly in 2026: The Future of the Browser Runtime</h3>
+              <p class="card-excerpt">
+                WASM has quietly become the secret weapon for high-performance web apps. Here's how it works and why you should care.
+              </p>
+              <a href="#" class="card-link" aria-label="Read: WebAssembly in 2026">Read more →</a>
+            </div>
+          </article>
+
+          <article class="post-card reveal" tabindex="0">
+            <div class="card-image card-img-2" aria-hidden="true">
+              <span class="post-tag tag-design">Design</span>
+            </div>
+            <div class="card-body">
+              <div class="post-meta">
+                <time datetime="2026-03-11">Mar 11, 2026</time>
+                <span class="meta-sep">·</span>
+                <span>5 min read</span>
+              </div>
+              <h3 class="card-title">Dark Mode Done Right: Principles for Elegant Dark UIs</h3>
+              <p class="card-excerpt">
+                Dark mode is everywhere, but most implementations miss the mark. We explore what separates the good from the great.
+              </p>
+              <a href="#" class="card-link" aria-label="Read: Dark Mode Done Right">Read more →</a>
+            </div>
+          </article>
+
+          <article class="post-card reveal" tabindex="0">
+            <div class="card-image card-img-3" aria-hidden="true">
+              <span class="post-tag tag-life">Life</span>
+            </div>
+            <div class="card-body">
+              <div class="post-meta">
+                <time datetime="2026-03-07">Mar 7, 2026</time>
+                <span class="meta-sep">·</span>
+                <span>4 min read</span>
+              </div>
+              <h3 class="card-title">Slow Living in a Fast World: Reclaiming Your Attention</h3>
+              <p class="card-excerpt">
+                The cost of constant connectivity is your focus. A practical guide to intentional living in the age of notifications.
+              </p>
+              <a href="#" class="card-link" aria-label="Read: Slow Living in a Fast World">Read more →</a>
+            </div>
+          </article>
+
+          <article class="post-card reveal" tabindex="0">
+            <div class="card-image card-img-4" aria-hidden="true">
+              <span class="post-tag tag-code">Code</span>
+            </div>
+            <div class="card-body">
+              <div class="post-meta">
+                <time datetime="2026-03-04">Mar 4, 2026</time>
+                <span class="meta-sep">·</span>
+                <span>9 min read</span>
+              </div>
+              <h3 class="card-title">Zero-Trust Architecture: Building Secure Systems from Scratch</h3>
+              <p class="card-excerpt">
+                Trust no one, verify everything. A deep dive into zero-trust network design with real-world implementation patterns.
+              </p>
+              <a href="#" class="card-link" aria-label="Read: Zero-Trust Architecture">Read more →</a>
+            </div>
+          </article>
+
+          <article class="post-card reveal" tabindex="0">
+            <div class="card-image card-img-5" aria-hidden="true">
+              <span class="post-tag tag-tech">Technology</span>
+            </div>
+            <div class="card-body">
+              <div class="post-meta">
+                <time datetime="2026-02-28">Feb 28, 2026</time>
+                <span class="meta-sep">·</span>
+                <span>7 min read</span>
+              </div>
+              <h3 class="card-title">The Open Source Renaissance: Why Collaboration Wins</h3>
+              <p class="card-excerpt">
+                Open source has never been more vibrant. Explore the dynamics behind thriving communities and what makes them tick.
+              </p>
+              <a href="#" class="card-link" aria-label="Read: The Open Source Renaissance">Read more →</a>
+            </div>
+          </article>
+
+          <article class="post-card reveal" tabindex="0">
+            <div class="card-image card-img-6" aria-hidden="true">
+              <span class="post-tag tag-design">Design</span>
+            </div>
+            <div class="card-body">
+              <div class="post-meta">
+                <time datetime="2026-02-24">Feb 24, 2026</time>
+                <span class="meta-sep">·</span>
+                <span>10 min read</span>
+              </div>
+              <h3 class="card-title">CSS in 2026: Modern Layout Techniques You Should Know</h3>
+              <p class="card-excerpt">
+                Container queries, cascade layers, and subgrid are transforming how we write CSS. Master the tools of tomorrow, today.
+              </p>
+              <a href="#" class="card-link" aria-label="Read: CSS in 2026">Read more →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TOPICS ===== -->
+    <section class="topics-section" id="topics">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">🗂 Topics</span>
+          <h2 class="section-title">Browse by Category</h2>
+        </div>
+
+        <div class="topics-grid">
+          <a href="#" class="topic-card topic-tech reveal" aria-label="Technology — 42 articles">
+            <div class="topic-icon" aria-hidden="true">💻</div>
+            <h3 class="topic-name">Technology</h3>
+            <span class="topic-count">42 articles</span>
+            <div class="topic-arrow" aria-hidden="true">→</div>
+          </a>
+          <a href="#" class="topic-card topic-design reveal" aria-label="Design — 31 articles">
+            <div class="topic-icon" aria-hidden="true">🎨</div>
+            <h3 class="topic-name">Design</h3>
+            <span class="topic-count">31 articles</span>
+            <div class="topic-arrow" aria-hidden="true">→</div>
+          </a>
+          <a href="#" class="topic-card topic-life reveal" aria-label="Life — 28 articles">
+            <div class="topic-icon" aria-hidden="true">🌿</div>
+            <h3 class="topic-name">Life</h3>
+            <span class="topic-count">28 articles</span>
+            <div class="topic-arrow" aria-hidden="true">→</div>
+          </a>
+          <a href="#" class="topic-card topic-ai reveal" aria-label="AI — 27 articles">
+            <div class="topic-icon" aria-hidden="true">🤖</div>
+            <h3 class="topic-name">AI</h3>
+            <span class="topic-count">27 articles</span>
+            <div class="topic-arrow" aria-hidden="true">→</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEWSLETTER ===== -->
+    <section class="newsletter-section" id="newsletter">
+      <div class="container">
+        <div class="newsletter-card reveal">
+          <div class="newsletter-content">
+            <span class="newsletter-emoji" aria-hidden="true">✉️</span>
+            <h2 class="newsletter-title">Stay in the loop</h2>
+            <p class="newsletter-desc">
+              Join 24,000+ readers. Get thoughtful articles delivered to your inbox every week —
+              no spam, unsubscribe anytime.
+            </p>
+            <form class="newsletter-form" id="newsletterForm" novalidate>
+              <label for="emailInput" class="sr-only">Email address</label>
+              <input
+                type="email"
+                id="emailInput"
+                name="email"
+                class="newsletter-input"
+                placeholder="your@email.com"
+                autocomplete="email"
+                required
+                aria-required="true"
+              />
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+            <p class="newsletter-message" id="newsletterMsg" role="alert" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo" aria-label="Paisy home">
+            <span class="logo-icon">P</span>
+            <span class="logo-text">Paisy</span>
+          </a>
+          <p class="footer-tagline">Ideas worth reading.</p>
+          <div class="social-links" aria-label="Social links">
+            <a href="#" class="social-btn" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.266 5.638 5.9-5.638Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="RSS Feed">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <h4 class="footer-heading">Explore</h4>
+          <ul role="list">
+            <li><a href="#featured">Featured</a></li>
+            <li><a href="#posts">Latest Posts</a></li>
+            <li><a href="#topics">Topics</a></li>
+            <li><a href="#newsletter">Newsletter</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-nav" aria-label="Topics navigation">
+          <h4 class="footer-heading">Topics</h4>
+          <ul role="list">
+            <li><a href="#">Technology</a></li>
+            <li><a href="#">Design</a></li>
+            <li><a href="#">Life</a></li>
+            <li><a href="#">AI</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Paisy. Built with ❤️ and pure HTML/CSS/JS.</p>
+        <p class="footer-links-inline">
+          <a href="#">Privacy</a> · <a href="#">Terms</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
