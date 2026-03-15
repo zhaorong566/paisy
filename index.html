@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paisy · 炫酷博客</title>
+  <style>
+    /* ── Reset & Variables ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0d1a;
+      --surface:   rgba(255,255,255,0.05);
+      --border:    rgba(255,255,255,0.10);
+      --accent1:   #7c3aed;
+      --accent2:   #06b6d4;
+      --accent3:   #f97316;
+      --text:      #e2e8f0;
+      --muted:     #94a3b8;
+      --radius:    16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Animated background gradient ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%,  rgba(124,58,237,0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 80%,  rgba(6,182,212,0.20)  0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 60% 30%,  rgba(249,115,22,0.12) 0%, transparent 70%);
+      animation: bgShift 12s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+    @keyframes bgShift {
+      0%   { opacity: 1; transform: scale(1)   rotate(0deg); }
+      100% { opacity: 0.8; transform: scale(1.1) rotate(2deg); }
+    }
+
+    /* ── Navbar ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(13,13,26,0.7);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem 5rem;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(6,182,212,0.3));
+      border: 1px solid rgba(124,58,237,0.5);
+      border-radius: 999px;
+      padding: 0.3rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 0.6s ease both;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      background: linear-gradient(135deg, #fff 30%, var(--accent2) 70%, var(--accent1) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInDown 0.7s 0.1s ease both;
+    }
+
+    .hero p {
+      margin: 1.5rem auto 0;
+      max-width: 540px;
+      color: var(--muted);
+      font-size: 1.1rem;
+      animation: fadeInDown 0.7s 0.2s ease both;
+    }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInDown 0.7s 0.3s ease both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      color: #fff;
+      box-shadow: 0 4px 24px rgba(124,58,237,0.4);
+    }
+    .btn-primary:hover { box-shadow: 0 8px 32px rgba(124,58,237,0.6); }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      backdrop-filter: blur(8px);
+    }
+    .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); }
+
+    /* ── Section ── */
+    section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.5px;
+    }
+    .section-sub {
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── Featured posts ── */
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent1);
+      box-shadow: 0 16px 40px rgba(124,58,237,0.25);
+    }
+
+    .card-cover {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-cover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: inherit;
+      filter: blur(0px);
+      transition: filter 0.3s;
+    }
+    .card:hover .card-cover::after { filter: blur(4px); }
+
+    .card-cover span { position: relative; z-index: 1; }
+
+    .cover-1 { background: linear-gradient(135deg, #1e1b4b, #7c3aed, #06b6d4); }
+    .cover-2 { background: linear-gradient(135deg, #1a0a2e, #f97316, #ec4899); }
+    .cover-3 { background: linear-gradient(135deg, #042f2e, #06b6d4, #22c55e); }
+    .cover-4 { background: linear-gradient(135deg, #450a0a, #ef4444, #f97316); }
+    .cover-5 { background: linear-gradient(135deg, #1e1b4b, #8b5cf6, #ec4899); }
+    .cover-6 { background: linear-gradient(135deg, #052e16, #10b981, #06b6d4); }
+
+    .card-body { padding: 1.5rem; }
+
+    .card-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .tag-purple { background: rgba(124,58,237,0.2); color: #a78bfa; border: 1px solid rgba(124,58,237,0.3); }
+    .tag-cyan   { background: rgba(6,182,212,0.2);  color: #67e8f9; border: 1px solid rgba(6,182,212,0.3); }
+    .tag-orange { background: rgba(249,115,22,0.2); color: #fb923c; border: 1px solid rgba(249,115,22,0.3); }
+    .tag-pink   { background: rgba(236,72,153,0.2); color: #f9a8d4; border: 1px solid rgba(236,72,153,0.3); }
+    .tag-green  { background: rgba(34,197,94,0.2);  color: #86efac; border: 1px solid rgba(34,197,94,0.3); }
+    .tag-red    { background: rgba(239,68,68,0.2);  color: #fca5a5; border: 1px solid rgba(239,68,68,0.3); }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    .card-excerpt { font-size: 0.88rem; color: var(--muted); margin-bottom: 1rem; }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .card-author { display: flex; align-items: center; gap: 0.5rem; }
+    .avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(12px);
+    }
+    .stat { text-align: center; }
+    .stat-value {
+      font-size: 2.2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 0.25rem; }
+
+    /* ── Newsletter ── */
+    .newsletter {
+      background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(6,182,212,0.10));
+      border: 1px solid rgba(124,58,237,0.3);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .newsletter h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .newsletter p { color: var(--muted); margin-bottom: 1.5rem; }
+
+    .nl-form {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .nl-input {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.75rem 1.5rem;
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+      width: 280px;
+      transition: border-color 0.2s;
+    }
+    .nl-input::placeholder { color: var(--muted); }
+    .nl-input:focus { border-color: var(--accent1); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--accent2); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Scroll-reveal ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── Keyframes ── */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      section { padding: 3rem 1rem; }
+    }
+
+    /* ── Cursor glow ── */
+    .cursor-glow {
+      pointer-events: none;
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      transition: left 0.1s, top 0.1s;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cursor glow effect -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">✦ Paisy</div>
+    <ul class="nav-links">
+      <li><a href="#posts">文章</a></li>
+      <li><a href="#about">关于</a></li>
+      <li><a href="#newsletter">订阅</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-badge">✨ 全新上线</div>
+    <h1>探索知识的<br/>无限宇宙</h1>
+    <p>这里有技术、设计、生活的深度思考。每一篇文章都是一次认知升级。</p>
+    <div class="hero-cta">
+      <a href="#posts" class="btn btn-primary">📖 开始阅读</a>
+      <a href="#newsletter" class="btn btn-outline">🔔 订阅更新</a>
+    </div>
+  </header>
+
+  <!-- Stats -->
+  <section>
+    <div class="stats-bar reveal">
+      <div class="stat"><div class="stat-value" data-target="128">0</div><div class="stat-label">篇原创文章</div></div>
+      <div class="stat"><div class="stat-value" data-target="24800">0</div><div class="stat-label">订阅读者</div></div>
+      <div class="stat"><div class="stat-value" data-target="360">0</div><div class="stat-label">万次阅读</div></div>
+      <div class="stat"><div class="stat-value" data-target="98">0</div><div class="stat-label">读者满意度 %</div></div>
+    </div>
+  </section>
+
+  <!-- Posts -->
+  <section id="posts">
+    <div class="reveal">
+      <div class="section-title">精选文章</div>
+      <div class="section-sub">来自前沿技术与深度思考的精华内容</div>
+    </div>
+
+    <div class="posts-grid">
+
+      <article class="card reveal">
+        <div class="card-cover cover-1"><span>🚀</span></div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag tag-purple">AI</span>
+            <span class="tag tag-cyan">技术</span>
+          </div>
+          <h2 class="card-title">大模型时代，程序员如何保持竞争力</h2>
+          <p class="card-excerpt">当 AI 写代码越来越顺手，我们的核心价值在哪里？深度思考工程师的未来路径。</p>
+          <div class="card-meta">
+            <div class="card-author">
+              <div class="avatar" style="background:linear-gradient(135deg,#7c3aed,#06b6d4)">Z</div>
+              <span>Paisy</span>
+            </div>
+            <span>8 分钟阅读</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-cover cover-2"><span>🎨</span></div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag tag-orange">设计</span>
+            <span class="tag tag-pink">UI/UX</span>
+          </div>
+          <h2 class="card-title">2025 年最值得关注的 10 个设计趋势</h2>
+          <p class="card-excerpt">玻璃拟态、暗黑模式、3D 沉浸式体验……哪些趋势会真正落地，哪些只是昙花一现？</p>
+          <div class="card-meta">
+            <div class="card-author">
+              <div class="avatar" style="background:linear-gradient(135deg,#f97316,#ec4899)">Z</div>
+              <span>Paisy</span>
+            </div>
+            <span>6 分钟阅读</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-cover cover-3"><span>⚡</span></div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag tag-cyan">性能</span>
+            <span class="tag tag-green">Web</span>
+          </div>
+          <h2 class="card-title">把网站首屏速度优化到 0.8 秒的完整指南</h2>
+          <p class="card-excerpt">从 CDN、懒加载到关键渲染路径，逐步拆解每一个影响速度的环节，附真实数据。</p>
+          <div class="card-meta">
+            <div class="card-author">
+              <div class="avatar" style="background:linear-gradient(135deg,#06b6d4,#22c55e)">Z</div>
+              <span>Paisy</span>
+            </div>
+            <span>12 分钟阅读</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-cover cover-4"><span>🔥</span></div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag tag-red">创业</span>
+            <span class="tag tag-orange">独立开发</span>
+          </div>
+          <h2 class="card-title">副业变主业：我用 6 个月做到月入 3 万的经历</h2>
+          <p class="card-excerpt">不是成功学，是真实的踩坑记录。从第一个付费用户到稳定收入，每个阶段怎么做。</p>
+          <div class="card-meta">
+            <div class="card-author">
+              <div class="avatar" style="background:linear-gradient(135deg,#ef4444,#f97316)">Z</div>
+              <span>Paisy</span>
+            </div>
+            <span>15 分钟阅读</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-cover cover-5"><span>🧠</span></div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag tag-purple">效率</span>
+            <span class="tag tag-pink">思维</span>
+          </div>
+          <h2 class="card-title">第二大脑：打造个人知识管理系统的实战方法</h2>
+          <p class="card-excerpt">用 Obsidian 构建卢曼卡片笔记法，让你的每篇笔记都成为知识网络中的活节点。</p>
+          <div class="card-meta">
+            <div class="card-author">
+              <div class="avatar" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">Z</div>
+              <span>Paisy</span>
+            </div>
+            <span>10 分钟阅读</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-cover cover-6"><span>🌱</span></div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag tag-green">开源</span>
+            <span class="tag tag-cyan">工具</span>
+          </div>
+          <h2 class="card-title">2025 年我最常用的 15 个开源工具（含配置教程）</h2>
+          <p class="card-excerpt">从终端美化、代码编辑到项目管理，这些工具让我的开发效率提升了 40%。</p>
+          <div class="card-meta">
+            <div class="card-author">
+              <div class="avatar" style="background:linear-gradient(135deg,#10b981,#06b6d4)">Z</div>
+              <span>Paisy</span>
+            </div>
+            <span>9 分钟阅读</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section id="newsletter">
+    <div class="newsletter reveal">
+      <h2>📬 订阅周刊</h2>
+      <p>每周精选 5 篇好文，直达你的邮箱。已有 <strong>24,800+</strong> 位读者订阅。</p>
+      <div class="nl-form">
+        <input class="nl-input" type="email" placeholder="your@email.com" />
+        <button class="btn btn-primary" onclick="handleSubscribe(this)">立即订阅</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="stats-bar reveal" style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;">
+      <div style="font-size:5rem;line-height:1">🧑‍💻</div>
+      <div style="flex:1;min-width:240px">
+        <h2 class="section-title" style="margin-bottom:0.75rem">关于 Paisy</h2>
+        <p style="color:var(--muted);margin-bottom:1rem">
+          Paisy 是一个专注于技术与思维方式的独立博客，
+          记录编程实战、设计思考与独立创业的真实经历。
+          相信「慢下来写清楚」比「快速输出」更有价值。
+        </p>
+        <a href="https://github.com/zhaorong566/paisy" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+          ★ GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 <a href="https://github.com/zhaorong566/paisy">Paisy</a> · 用❤️构建 · MIT License</p>
+  </footer>
+
+  <script>
+    // Cursor glow
+    const glow = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top  = e.clientY + 'px';
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Animated counter
+    function animateCount(el) {
+      const target = +el.dataset.target;
+      const duration = 1800;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current).toLocaleString('zh-CN');
+      }, 16);
+    }
+
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('[data-target]').forEach(animateCount);
+          counterObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.stats-bar').forEach(el => counterObserver.observe(el));
+
+    // Newsletter
+    function handleSubscribe(btn) {
+      const input = btn.previousElementSibling;
+      if (!input.value || !input.value.includes('@')) {
+        input.style.borderColor = '#ef4444';
+        setTimeout(() => input.style.borderColor = '', 1500);
+        return;
+      }
+      btn.textContent = '✓ 已订阅！';
+      btn.style.background = 'linear-gradient(135deg, #10b981, #06b6d4)';
+      input.disabled = true;
+      btn.disabled = true;
+    }
+  </script>
+</body>
+</html>
