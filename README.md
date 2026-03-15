@@ -15,6 +15,14 @@ A visually impressive, responsive blog webpage built with pure HTML, CSS, and va
 - **Animated stat counters** in the hero section
 - **Sticky nav** that becomes frosted-glass on scroll
 
+## Live Preview
+
+This site is deployed via **GitHub Pages**. After pushing to the `main` branch, the site is automatically built and deployed.
+
+Visit: `https://YOUR-USERNAME.github.io/paisy/`
+
+> **Note:** To enable GitHub Pages, go to your repository **Settings → Pages** and set the source to **GitHub Actions**.
+
 ## Getting Started
 
 No installation needed. Simply open `index.html` in your browser:
@@ -35,6 +43,9 @@ Then visit `http://localhost:8080` (or `http://localhost:3000` with `npx serve`)
 
 ```
 paisy/
+├── .github/
+│   └── workflows/
+│       └── static.yml   # GitHub Pages deployment workflow
 ├── index.html   # Main blog page
 ├── styles.css   # All styles (responsive, animations, dark theme)
 ├── script.js    # Interactions (nav, scroll reveal, counters, typing)
