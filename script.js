@@ -158,9 +158,7 @@
       const value = Math.round(eased * target);
 
       if (suffix === 'K') {
-        el.textContent = value >= 1000
-          ? (value / 1000).toFixed(1) + 'K'
-          : value;
+        el.textContent = (value / 1000).toFixed(1) + 'K';
       } else {
         el.textContent = value;
       }
