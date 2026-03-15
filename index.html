@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Paisy — A modern blog exploring technology, design, life and code." />
+  <title>Paisy — Modern Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Loading Bar -->
+  <div id="loading-bar" class="loading-bar" style="width:0%"></div>
+
+  <!-- Background Orbs -->
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- ===========================
+       NAVIGATION
+       =========================== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">Paisy</a>
+      <ul class="nav-links">
+        <li><a href="#featured">Featured</a></li>
+        <li><a href="#latest">Latest</a></li>
+        <li><a href="#topics">Topics</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="#newsletter" class="nav-cta">Subscribe Free</a></li>
+      </ul>
+      <button class="nav-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===========================
+       HERO SECTION
+       =========================== -->
+  <header class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Now publishing
+        </div>
+
+        <h1 class="hero-title">
+          <span class="line">Ideas worth</span>
+          <span class="line gradient-text">sharing &amp; exploring</span>
+        </h1>
+
+        <p class="hero-desc">
+          Thoughtful writing on <span id="typing-text" style="color:var(--color-accent);font-weight:600"></span><span style="color:var(--color-accent);animation:pulse 1s ease-in-out infinite;display:inline-block">|</span>
+          — crafted with passion and curiosity.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#featured" class="btn btn-primary">
+            Start Reading
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#topics" class="btn btn-secondary">
+            Explore Topics
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-value" data-value="128">0</span>
+            <span class="stat-label">Articles</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" data-value="24000">0</span>
+            <span class="stat-label">Readers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" data-value="4.9">0</span>
+            <span class="stat-label">Avg. Rating</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" data-value="3">0</span>
+            <span class="stat-label">Posts / Week</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-indicator" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </header>
+
+  <!-- ===========================
+       FEATURED POST
+       =========================== -->
+  <section class="section featured-section" id="featured">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Editor's Pick</span>
+        <h2 class="section-title">Featured Post</h2>
+        <p class="section-desc">Hand-picked stories to inspire, inform, and spark your curiosity.</p>
+      </div>
+
+      <div class="featured-card reveal">
+        <div class="featured-image">
+          <div class="featured-image-placeholder gradient-bg-featured">🌌</div>
+          <div class="featured-image-overlay"></div>
+        </div>
+        <div class="featured-body">
+          <span class="post-tag tag-ai">Artificial Intelligence</span>
+          <h3 class="featured-title">The Age of Generative AI: How Machines Learned to Dream</h3>
+          <p class="featured-excerpt">
+            From text to images, music to code — generative AI is redefining creativity itself.
+            We explore the breakthroughs, the controversies, and what it truly means when machines
+            start to create. This is not science fiction; this is happening now, and it's changing everything.
+          </p>
+          <div class="post-meta">
+            <div class="meta-avatar">ZR</div>
+            <div class="meta-info">
+              <span class="meta-author">Zhaorong</span>
+              <span class="meta-date">March 10, 2026</span>
+            </div>
+            <div class="meta-divider" aria-hidden="true"></div>
+            <span class="meta-read-time">8 min read</span>
+          </div>
+          <a href="#" class="read-more-link">
+            Read Full Article
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       LATEST POSTS
+       =========================== -->
+  <section class="section" id="latest">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Fresh Content</span>
+        <h2 class="section-title">Latest Posts</h2>
+        <p class="section-desc">New ideas arrive every week. Stay curious, keep reading.</p>
+      </div>
+
+      <div class="posts-grid">
+
+        <!-- Post 1 -->
+        <article class="post-card reveal reveal-delay-1">
+          <div class="post-card-image">
+            <div class="post-card-image-placeholder gradient-bg-1">⚡</div>
+          </div>
+          <div class="post-card-body">
+            <span class="post-tag tag-tech">Technology</span>
+            <h3 class="post-card-title">WebAssembly in 2026: The Future of the Browser Runtime</h3>
+            <p class="post-card-excerpt">
+              WASM is no longer a curiosity — it's powering everything from games to AI inference
+              directly in your browser at near-native speed. Here's what changed and what's coming next.
+            </p>
+            <div class="post-card-footer">
+              <div class="post-card-author">
+                <div class="author-avatar-sm">ZR</div>
+                <span class="author-name-sm">Zhaorong</span>
+              </div>
+              <span class="post-card-date">Mar 14, 2026 · 6 min</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="post-card reveal reveal-delay-2">
+          <div class="post-card-image">
+            <div class="post-card-image-placeholder gradient-bg-2">🎨</div>
+          </div>
+          <div class="post-card-body">
+            <span class="post-tag tag-design">Design</span>
+            <h3 class="post-card-title">Dark Mode Done Right: Principles for Elegant Dark UIs</h3>
+            <p class="post-card-excerpt">
+              Dark mode is more than inverting colors. True dark UI design requires understanding
+              elevation, vibrance, and accessibility — balancing aesthetics with readability at any hour.
+            </p>
+            <div class="post-card-footer">
+              <div class="post-card-author">
+                <div class="author-avatar-sm">ZR</div>
+                <span class="author-name-sm">Zhaorong</span>
+              </div>
+              <span class="post-card-date">Mar 11, 2026 · 5 min</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="post-card reveal reveal-delay-3">
+          <div class="post-card-image">
+            <div class="post-card-image-placeholder gradient-bg-3">🌿</div>
+          </div>
+          <div class="post-card-body">
+            <span class="post-tag tag-life">Life</span>
+            <h3 class="post-card-title">Slow Living in a Fast World: Reclaiming Your Attention</h3>
+            <p class="post-card-excerpt">
+              In an era of infinite scroll and notification overload, choosing to slow down is a radical
+              act. This piece explores practical ways to be more intentional with your time and focus.
+            </p>
+            <div class="post-card-footer">
+              <div class="post-card-author">
+                <div class="author-avatar-sm">ZR</div>
+                <span class="author-name-sm">Zhaorong</span>
+              </div>
+              <span class="post-card-date">Mar 7, 2026 · 4 min</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="post-card reveal reveal-delay-1">
+          <div class="post-card-image">
+            <div class="post-card-image-placeholder gradient-bg-4">🔐</div>
+          </div>
+          <div class="post-card-body">
+            <span class="post-tag tag-code">Code</span>
+            <h3 class="post-card-title">Zero-Trust Architecture: Building Secure Systems from Scratch</h3>
+            <p class="post-card-excerpt">
+              "Never trust, always verify" — the zero-trust model is transforming how organizations
+              think about security. A practical deep-dive into implementing it in modern cloud environments.
+            </p>
+            <div class="post-card-footer">
+              <div class="post-card-author">
+                <div class="author-avatar-sm">ZR</div>
+                <span class="author-name-sm">Zhaorong</span>
+              </div>
+              <span class="post-card-date">Mar 4, 2026 · 9 min</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 5 -->
+        <article class="post-card reveal reveal-delay-2">
+          <div class="post-card-image">
+            <div class="post-card-image-placeholder gradient-bg-5">🚀</div>
+          </div>
+          <div class="post-card-body">
+            <span class="post-tag tag-tech">Technology</span>
+            <h3 class="post-card-title">The Open Source Renaissance: Why Collaboration Wins</h3>
+            <p class="post-card-excerpt">
+              Open source is eating the software world. From Linux to LLMs, the most impactful
+              tools of our generation are built in the open. Here's why this model keeps winning.
+            </p>
+            <div class="post-card-footer">
+              <div class="post-card-author">
+                <div class="author-avatar-sm">ZR</div>
+                <span class="author-name-sm">Zhaorong</span>
+              </div>
+              <span class="post-card-date">Feb 28, 2026 · 7 min</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 6 -->
+        <article class="post-card reveal reveal-delay-3">
+          <div class="post-card-image">
+            <div class="post-card-image-placeholder gradient-bg-6">✨</div>
+          </div>
+          <div class="post-card-body">
+            <span class="post-tag tag-design">Design</span>
+            <h3 class="post-card-title">CSS in 2026: Modern Layout Techniques You Should Know</h3>
+            <p class="post-card-excerpt">
+              Container queries, cascade layers, has() selector, and more — CSS has never been more
+              powerful. This comprehensive guide walks you through the patterns that actually matter.
+            </p>
+            <div class="post-card-footer">
+              <div class="post-card-author">
+                <div class="author-avatar-sm">ZR</div>
+                <span class="author-name-sm">Zhaorong</span>
+              </div>
+              <span class="post-card-date">Feb 24, 2026 · 10 min</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       TOPICS
+       =========================== -->
+  <section class="section topics-section" id="topics">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Browse by Topic</span>
+        <h2 class="section-title">Explore Categories</h2>
+        <p class="section-desc">Find the content that matters most to you.</p>
+      </div>
+
+      <div class="topics-grid">
+        <div class="topic-card reveal reveal-delay-1">
+          <span class="topic-icon">💻</span>
+          <h3 class="topic-name">Technology</h3>
+          <p class="topic-count">42 articles</p>
+        </div>
+        <div class="topic-card reveal reveal-delay-2">
+          <span class="topic-icon">🎨</span>
+          <h3 class="topic-name">Design</h3>
+          <p class="topic-count">31 articles</p>
+        </div>
+        <div class="topic-card reveal reveal-delay-3">
+          <span class="topic-icon">🌱</span>
+          <h3 class="topic-name">Life</h3>
+          <p class="topic-count">28 articles</p>
+        </div>
+        <div class="topic-card reveal reveal-delay-4">
+          <span class="topic-icon">🤖</span>
+          <h3 class="topic-name">AI</h3>
+          <p class="topic-count">27 articles</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       NEWSLETTER
+       =========================== -->
+  <section class="section newsletter-section" id="newsletter">
+    <div class="container">
+      <div class="newsletter-card reveal">
+        <h2 class="newsletter-title">
+          Never miss a story
+          <span class="text-gradient"> ✦</span>
+        </h2>
+        <p class="newsletter-desc">
+          Join 24,000+ readers getting the best posts delivered to their inbox every week.
+          No spam, ever. Unsubscribe any time.
+        </p>
+        <form class="newsletter-form" novalidate>
+          <input
+            type="email"
+            class="newsletter-input"
+            placeholder="your@email.com"
+            aria-label="Email address"
+            autocomplete="email"
+          />
+          <button type="submit" class="btn btn-primary">Subscribe Free</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       FOOTER
+       =========================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name">Paisy</div>
+          <p class="footer-brand-desc">
+            A modern blog exploring technology, design, and the art of living well in the digital age.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="Twitter / X">𝕏</a>
+            <a href="#" class="social-btn" aria-label="GitHub">⌥</a>
+            <a href="#" class="social-btn" aria-label="RSS Feed">⊙</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Content</h4>
+          <ul class="footer-links">
+            <li><a href="#featured">Featured</a></li>
+            <li><a href="#latest">Latest Posts</a></li>
+            <li><a href="#topics">All Topics</a></li>
+            <li><a href="#newsletter">Newsletter</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Topics</h4>
+          <ul class="footer-links">
+            <li><a href="#">Technology</a></li>
+            <li><a href="#">Design</a></li>
+            <li><a href="#">Life</a></li>
+            <li><a href="#">AI</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">About</h4>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Write for Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Paisy. Built with passion &amp; caffeine ☕</span>
+        <span>Made with ❤️ — Open Source</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
